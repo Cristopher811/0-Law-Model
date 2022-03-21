@@ -18,9 +18,6 @@ while (areSame(A,B) == 0):
     C[0] = (A[0] + A[1])/2
     D[1] = (B[0] + B[1])/2
     D[0] = (A[1] + B[0] + B[1])/3
-    print(C)
-    print(D)
-    break
     if (areSame(C,D) == 0):
         A[1] = (C[0] + C[1] + D[0])/3
         A[0] = (C[0] + C[1])/2
