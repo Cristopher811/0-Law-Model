@@ -2,8 +2,8 @@ import numpy as np
 
 TA = float(input("bla: "))
 TB = float(input("bla: "))
-A = np.full((10,10),TA)
-B = np.full((10,10),TB)
+A = np.full((4,4),TA)
+B = np.full((4,4),TB)
 EQ = (TA + TB)/2
 
 C = np.concatenate((A, B), axis = 1)
@@ -40,4 +40,4 @@ while(eq(C) == 0):
             D[i][j] = prom_vecinos
     C = D.copy()
     print(C, end='\n\n')
-    print(n)
+    print(n, end='\n\n')
