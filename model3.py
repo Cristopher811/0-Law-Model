@@ -1,5 +1,24 @@
 import numpy as np
 
+def conseguir_vecinos(i,j,  arreglo):
+    puntos = [(i,j),(i+1,j),(i-1,j),(i,j+1),(i,j-1)]
+    validos = []
+    for p in puntos:
+        if 0 <= p[0] < len(arreglo) and 0 <= p[1] < len(arreglo[0]):
+            validos.append(p)
+    return validos
+
+def equivalentes(C, T1, T2):
+    tolerance = 1e-9
+    EQ = (T1 + T2)/2
+    for i in range(len(C)):
+        for j in range(len(C[i])):
+            tol_value = EQ - C[i][j]
+            tol_value = abs(tol_value)
+            if (tol_value > tolerance):
+                return 0
+    return 1
+
 n_1 = 0
 n_2 = 0
 n_3 = 0
@@ -25,25 +44,6 @@ print('\n\n Cuerpo AB:')
 print(AB, end='\n\n Cuerpo BC: \n')
 print(BC, end='\n\n Cuerpo AC: \n')
 print(AC, end='\n\n')
-
-def conseguir_vecinos(i,j,  arreglo):
-    puntos = [(i,j),(i+1,j),(i-1,j),(i,j+1),(i,j-1)]
-    validos = []
-    for p in puntos:
-        if 0 <= p[0] < len(arreglo) and 0 <= p[1] < len(arreglo[0]):
-            validos.append(p)
-    return validos
-
-def equivalentes(C, T1, T2):
-    tolerance = 1e-9
-    EQ = (T1 + T2)/2
-    for i in range(len(C)):
-        for j in range(len(C[i])):
-            tol_value = EQ - C[i][j]
-            tol_value = abs(tol_value)
-            if (tol_value > tolerance):
-                return 0
-    return 1
 
 while(equivalentes(AB, TA, TB) == 0):
     n_1 += 1
