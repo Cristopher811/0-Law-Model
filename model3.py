@@ -21,9 +21,9 @@ BC_copia = BC.copy()
 AC = np.concatenate((A,C), axis = 1)
 AC_copia = AC.copy()
 
-print('\n\n')
-print(AB, end='\n\n')
-print(BC, end='\n\n')
+print('\n\n Cuerpo AB:')
+print(AB, end='\n\n Cuerpo BC: \n')
+print(BC, end='\n\n Cuerpo AC: \n')
 print(AC, end='\n\n')
 
 def conseguir_vecinos(i,j,  arreglo):
@@ -81,10 +81,10 @@ while(equivalentes(AC, TA, TC) == 0):
             AC_copia[i][j] = prom_vecinos
     AC = AC_copia.copy()
 
-print('\n\n')
-print(AB, end='\n\n')
-print(n_1, end='\n\n')
-print(BC, end='\n\n')
-print(n_2, end='\n\n')
-print(AC, end='\n\n')
-print(n_3, end='\n\n')
+print('\n\n Cuerpo AB:')
+print(AB, end='\n\n El equilibrio térmico entre A y B se alcanzó después de ')
+print(n_1, end=' iteraciones. \n\n Cuerpo BC: \n')
+print(BC, end='\n\n El equilibrio térmico entre B y C se alcanzó después de ')
+print(n_2, end=' iteraciones. \n\n Cuerpo AC: \n')
+print(AC, end='\n\n El equilibrio térmico entre A y C se alcanzó después de ')
+print(n_3, end=' iteraciones. \n\n')
