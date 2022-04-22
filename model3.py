@@ -9,11 +9,10 @@ def conseguir_vecinos(i,j,  arreglo):
     return validos
 
 N = int(input("Ingrese el tamaño de la matriz NxN: "))
+q = int(100/(N-1))
 
 c = 0
 Z1 = np.zeros((1, N+2))
-Z2 = np.zeros((1,1))
-Z3 = np.zeros((N+1, N+2))
 
 A = np.full((N,N), 25)
 M1 = np.full((N, 1), 1)
@@ -23,39 +22,33 @@ A = np.append(A, M4, axis = 1)
 A = np.append(A, Z1, axis = 0)
 A = np.append(Z1, A, axis = 0)
 
-M2 = np.full((1, N), 2)
-M2 = np.append(M2, Z2, axis = 1)
-M2 = np.append(Z2, M2, axis = 1)
-M2 = np.append(M2, Z3, axis = 0)
+print('\n Cuerpo sin modificar', A)
 
-M3 = np.full((1, N), 3)
-M3 = np.append(M3, Z2, axis = 1)
-M3 = np.append(Z2, M3, axis = 1)
-M3 = np.append(Z3, M3, axis = 0)
+for i in range (N+2):
+  for j in range (N+2):
+    if((i==0 or i == N+1) and (0<j<N+1)):
+      if(j == 1):
+        A[i][j] = 0
+      else:
+        A[i][j] = A[i][j-1] + q
 
-S = A + M2 + M3
-S_copia = S.copy()
-
-print(S_copia)
-
-for x in range (0, 100):
-  temp2 = x
-  temp3
-
+A_copia = A.copy()
+print('\n Cuerpo con T3 y T4 variando linealmente', A)
+      
 while(c <= 1):
   for i in range (N+2):
     for j in range (N+2):
       if(i == 0 or j == 0):
-        S_copia[i][j] = S[i][j]
+        A_copia[i][j] = A[i][j]
       elif(i == N+1 or j == N+1):
-        S_copia[i][j] = S[i][j]
+        A_copia[i][j] = A[i][j]
       else:
-        vecinos = conseguir_vecinos(i, j, S)
+        vecinos = conseguir_vecinos(i, j, A)
         sum_vecinos = 0
         for p in vecinos: 
-          sum_vecinos += S[p[0]][p[1]]
+          sum_vecinos += A[p[0]][p[1]]
           prom_vecinos = (sum_vecinos)/len(vecinos)
-          S_copia[i][j] = prom_vecinos
-      S = S_copia.copy()
-      print(S_copia)
+          A_copia[i][j] = prom_vecinos
+      A = A_copia.copy()
+      print(A_copia)
       c += 1
